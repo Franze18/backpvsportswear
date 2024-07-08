@@ -1,6 +1,5 @@
 package com.pvsportswear.backpvsportswear.Service;
 
-
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -15,28 +14,29 @@ import com.pvsportswear.backpvsportswear.Model.UserAuth;
 import com.pvsportswear.backpvsportswear.Repository.UserAuthRepository;
 
 @Service
-public class CustomUserAuthDetailService implements UserDetailsService{
+public class CustomUserAuthDetailService implements UserDetailsService {
 
-    private UserAuthRepository userRepository;
+    private UserAuthRepository repo;
 
-    public CustomUserAuthDetailService(UserAuthRepository userRepository){
-        this.userRepository = userRepository;
+    public CustomUserAuthDetailService(UserAuthRepository repo) {
+        this.repo = repo;
     }
-    
-    public UserDetails loadUserByUsername(String usernameOrEmail) throws UsernameNotFoundException{
-        UserAuth user = userRepository.findByUsernameOrEmail(usernameOrEmail, usernameOrEmail)
-            .orElseThrow(() ->
-                new UsernameNotFoundException("User not found with username or email" + usernameOrEmail));
 
-        Set<GrantedAuthority> authorities = user
-            .getRoles()
-            .stream()
-            .map((role) -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toSet());
+    public UserDetails loadUserByUsername(String usernameOrEmail) throws UsernameNotFoundException{
+        UserAuth userAuth = repo.findByUsernameOrEmail(usernameOrEmail, usernameOrEmail).orElseThrow(
+            () -> new UsernameNotFoundException("Username not found with username or email" + usernameOrEmail));
+
+        Set<GrantedAuthority> authorities = userAuth
+        .getRoles()
+        .stream()
+        .map((role) -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toSet());
 
         return new org.springframework.security.core.userdetails.User(
-            user.getEmail(),
-            user.getPassword(),
+            userAuth.getEmail(),
+            userAuth.getPassword(),
             authorities
         );
+        
+
     }
 }

@@ -21,7 +21,7 @@ import com.pvsportswear.backpvsportswear.Repository.UserAuthRepository;
 @RestController
 @RequestMapping("/api/v1/auth")
 public class AuthController {
-
+    
     @Autowired
     UserAuthRepository userRepository;
 
@@ -34,17 +34,17 @@ public class AuthController {
     @Autowired
     AuthenticationManager authenticationManager;
 
-
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody RegistrationRequest registrationRequest){
 
         if(userRepository.existsByUsername(registrationRequest.getUsername())){
-            return new ResponseEntity<>("Username is already taken!", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Username is already take!", HttpStatus.BAD_REQUEST);
         }
 
         if(userRepository.existsByEmail(registrationRequest.getEmail())){
             return new ResponseEntity<>("An account is already registered in this email", HttpStatus.BAD_REQUEST);
         }
+
         UserAuth user = new UserAuth(
             registrationRequest.getUsername(),
             registrationRequest.getEmail(),
@@ -56,6 +56,8 @@ public class AuthController {
 
         userRepository.save(user);
 
-        return new ResponseEntity<>("User registered successfully", HttpStatus.OK);
+        return new ResponseEntity<>("User registered successfully", HttpStatus.OK); 
+        
+
     }
 }
