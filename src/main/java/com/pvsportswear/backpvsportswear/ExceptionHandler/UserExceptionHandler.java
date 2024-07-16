@@ -9,10 +9,11 @@ import com.pvsportswear.backpvsportswear.NotFoundException.UserNotFoundException
 
 @RestControllerAdvice
 public class UserExceptionHandler {
+
     @ExceptionHandler(UserNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    String userNotFoundHandler(UserNotFoundException e){
+    String UserNotFoundHandler(UserNotFoundException e){
         return e.getMessage();
     }
-}
 
+}

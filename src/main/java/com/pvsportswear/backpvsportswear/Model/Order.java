@@ -6,54 +6,48 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table (name = "ordertbl")
+@Table(name = "ordertbl")
+
 public class Order {
 
-    @Id
-    @GeneratedValue 
-    private Long orderid;
-    private Long userId;
-    private double totalAmmount;
-    private String status;
+    private @Id
+    @GeneratedValue Long orderId;
+        private  Long userId;
+        private double totalAmount;
+        private String status;
+    
+        Order(){}
+        public Order(Long userId,double totalAmount,String status){
+            this.userId = userId;
+            this.totalAmount = totalAmount;
+            this.status = status;
+        }
+        //getters
+        public Long getOrderId(){
+            return orderId;
+        }
+        public Long getUserId(){
+            return userId;
+        }
+        public double gettotalAmount(){
+            return totalAmount;
+        }
+        public String getstatus(){
+            return status;
+        }
+        
+    
+        //setters
 
-    Order(){}
-
-    public Order(String status, double totalAmmount, Long userId) {
-        this.status = status;
-        this.totalAmmount = totalAmmount;
-        this.userId = userId;
-    }
-
-
-    //getters
-    public Long getOrderid() {
-        return orderid;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public double getTotalAmmount() {
-        return totalAmmount;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    //setters
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public void setTotalAmmount(double totalAmmount) {
-        this.totalAmmount = totalAmmount;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
+        public void setuserId(Long userId){
+            this.userId = userId;
+        }
+        public void settotalAmount(double totalAmount){
+            this.totalAmount = totalAmount;
+        }
+        public void setstatus(String status){
+            this.status = status;
+        }
+        
+     
 }

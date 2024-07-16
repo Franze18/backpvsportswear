@@ -1,6 +1,9 @@
 package com.pvsportswear.backpvsportswear.Model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
 public class Role {
@@ -10,9 +13,9 @@ public class Role {
     private Long id;
     private String name;
 
+    //getters
     Role(){}
 
-    //getters
     public Long getId() {
         return id;
     }
@@ -20,7 +23,6 @@ public class Role {
     public String getName() {
         return name;
     }
-
     //setters
     public void setId(Long id) {
         this.id = id;
@@ -30,5 +32,6 @@ public class Role {
         this.name = name;
     }
 
+    
 
 }

@@ -12,7 +12,8 @@ public class OrderItemExceptionHandler {
 
     @ExceptionHandler(OrderItemNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    String orderItemNotFoundHandler(OrderItemNotFoundException e) {
+    String OrderItemNotFoundHandler(OrderItemNotFoundException e){
         return e.getMessage();
     }
+
 }
