@@ -8,11 +8,11 @@
 		<version>3.3.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.lunacompany</groupId>
-	<artifactId>ruff_teas</artifactId>
+	<groupId>com.pvsportswear</groupId>
+	<artifactId>backpvsportswear</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ruff_teas</name>
-	<description>Ordering Management System</description>
+	<name>backpvsportswear</name>
+	<description>A management system for pv sportswear</description>
 	<url/>
 	<licenses>
 		<license/>
